@@ -3,5 +3,4 @@ numpy
 statsmodels
 yfinance
 pandas-datareader
-pyyaml
 requests
