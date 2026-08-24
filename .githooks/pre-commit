@@ -6,7 +6,7 @@
 # deliberate `git add -f`, and a file that was already tracked before the
 # ignore rule existed (an ignore rule does nothing to an already-tracked path).
 
-PATTERN='(^|/)config_local\.py$|\.local\.[^/]*$|^data/|^outputs/|\.env$|\.(csv|parquet|feather|xlsx|xls|h5|pkl|pdf)$|(^|/)statements/|(^|/)CLAUDE\.md$|(^|/)AGENTS\.md$|(^|/)\.claude|(^|/)\.cursor/|(^|/)\.aider'
+PATTERN='(^|/)config_local\.py$|\.local\.[^/]*$|^data/|^outputs/|\.env$|\.(csv|parquet|feather|xlsx|xls|h5|pkl|pdf)$|(^|/)statements/|(^|/)CLAUDE[^/]*$|(^|/)AGENTS\.md$|(^|/)\.claude|(^|/)\.cursor/|(^|/)\.aider'
 
 blocked=$(printf '%s\n%s\n' "$(git diff --cached --name-only --diff-filter=ACMR)" "$(git ls-files)" \
   | grep -E "$PATTERN" | sort -u)

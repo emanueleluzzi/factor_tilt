@@ -28,7 +28,7 @@ statements/
 # ---------------------------------------------------------------- Local tooling
 .claude/
 .claude*
-CLAUDE.md
+CLAUDE*
 AGENTS.md
 .cursor/
 .aider*
