@@ -1,0 +1,19 @@
+# ---------------------------------------------------------------------------
+# Template for config.local.yaml (gitignored — never committed).
+# Copy to config.local.yaml and fill in. Keys here override config.yaml;
+# merging is recursive, so you only restate what differs.
+# ---------------------------------------------------------------------------
+
+data:
+  base_currency: EUR
+
+portfolio:
+  account_currency: EUR
+  # Real held weights or position sizes.
+  holdings:
+    SWRD.L: 0.00
+    AVUV: 0.00
+
+optimize:
+  reference_weights:
+    SWRD.L: 0.00

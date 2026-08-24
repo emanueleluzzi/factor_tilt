@@ -1,0 +1,3 @@
+# Normalise everything to LF in the repo and on checkout: the pre-commit
+# hook is run by sh and breaks on CRLF.
+* text=auto eol=lf

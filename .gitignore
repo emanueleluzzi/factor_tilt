@@ -1,0 +1,67 @@
+# ---------------------------------------------------------------- Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# virtualenvs
+.venv/
+venv/
+env/
+ENV/
+
+# ---------------------------------------------------------------- Data
+# Everything under data/ is downloaded and reproducible from the scripts.
+data/
+outputs/
+notebooks/scratch/
+
+# Tabular / binary artefacts, wherever they land.
+*.parquet
+*.feather
+*.csv
+*.xlsx
+*.xls
+*.h5
+*.pkl
+
+# ---------------------------------------------------------------- Private
+# Real holdings, weights, account currency, anything account-specific.
+config.local.yaml
+*.local.*
+!config.local.yaml.example
+
+.env
+*.env
+.envrc
+
+# Broker exports / statements (IBKR activity reports etc.)
+*.pdf
+statements/
+ibkr/
+
+# ---------------------------------------------------------------- Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ---------------------------------------------------------------- Local tooling
+# Assistant / editor scaffolding — never part of the public repo.
+.claude/
+.claude*
+CLAUDE.md
+AGENTS.md
+.cursor/
+.aider*
+.github/copilot-instructions.md

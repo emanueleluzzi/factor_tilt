@@ -1,0 +1,26 @@
+#!/bin/sh
+# Refuse commits that stage — or leave tracked — private or generated files.
+# Enable with:  git config core.hooksPath scripts/hooks
+#
+# .gitignore already covers these. This catches the two cases it cannot: a
+# `git add -f`, and a file that was already tracked before the ignore rule
+# existed (an ignore rule does nothing to an already-tracked path).
+
+PATTERN='(^|/)config\.local\.yaml$|\.local\.[^/]*$|^data/|^outputs/|(^|/)\.env$|\.env$|\.(csv|parquet|feather|xlsx|xls|h5|pkl|pdf)$|(^|/)statements/|(^|/)CLAUDE\.md$|(^|/)AGENTS\.md$|(^|/)\.claude|(^|/)\.cursor/|(^|/)\.aider'
+ALLOW='^config\.local\.yaml\.example$'
+
+staged=$(git diff --cached --name-only --diff-filter=ACMR)
+tracked=$(git ls-files)
+
+blocked=$(printf '%s\n%s\n' "$staged" "$tracked" \
+  | grep -E "$PATTERN" | grep -Ev "$ALLOW" | sort -u)
+
+if [ -n "$blocked" ]; then
+  echo "pre-commit: private or generated files in the commit or the index:" >&2
+  printf '  %s\n' $blocked >&2
+  echo >&2
+  echo "These must not reach a public remote. Untrack with" >&2
+  echo "  git rm --cached <path>" >&2
+  echo "or, if one is genuinely public, add it to ALLOW in this hook." >&2
+  exit 1
+fi
